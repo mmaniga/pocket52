@@ -3,28 +3,28 @@ package ggame
 import "fmt"
 
 type Deck struct {
-	Cards []Card
+	Cards     []Card
 	NoOfDecks int
 }
 
-func NewDeck() (*Deck) {
-	d:= Deck{Cards:make([]Card,52),NoOfDecks:1}
+func NewDeck() *Deck {
+	d := Deck{Cards: make([]Card, 52), NoOfDecks: 1}
 	index := 0
-	for s:= range SUITS {
+	for s := range SUITS {
 		for r := range RANKS {
-			d.Cards[index] = Card(s*4+r)
+			d.Cards[index] = Card(r*4 + s)
+			fmt.Println(index, ":", r*4+s)
 			index++
 		}
 	}
 	return &d
- }
+}
 
-
-func (d *Deck) Print()  {
-	index :=0
-	for i := 0; i< 4;i++ {
-		for j :=0;j<13;j++ {
-			fmt.Println(d.Cards[index])
+func (d *Deck) Print() {
+	index := 0
+	for i := 0; i < 4; i++ {
+		for j := 0; j < 13; j++ {
+			fmt.Println(d.Cards[index].String())
 			index++
 		}
 	}
