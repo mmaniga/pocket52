@@ -1,6 +1,7 @@
 package ggame
 
 import (
+	"errors"
 	"fmt"
 	"math/rand"
 	"strings"
@@ -73,4 +74,22 @@ func (d *Deck) Take() Card {
 		d.Cards = d.Cards[1:]
 	}
 	return c
+}
+
+// Not sure of which name to keep for the function..
+func (d *Deck) Pop() Card {
+	return d.Pop()
+}
+
+func (d *Deck) PopN(nCards int) ([]Card, error) {
+	cards := make([]Card, nCards)
+
+	if len(d.Cards) < nCards {
+		return cards, errors.New("Less cards in Deck")
+	}
+	for i := 0; i < nCards; i++ {
+		cards[i] = d.Pop()
+	}
+	return cards, nil
+
 }
