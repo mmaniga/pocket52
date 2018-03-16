@@ -1,6 +1,9 @@
 package ggame
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 type Deck struct {
 	Cards     []Card
@@ -28,4 +31,21 @@ func (d *Deck) Print() {
 			index++
 		}
 	}
+}
+
+func (d *Deck) ToString() string {
+	var buffer strings.Builder
+	index := 0
+	for i := 0; i < 4; i++ {
+		for j := 0; j < 13; j++ {
+			buffer.WriteString(d.Cards[index].String())
+			buffer.WriteString(" ")
+			index++
+		}
+	}
+	return buffer.String()
+}
+
+func (d *Deck) Shuffle() {
+
 }
