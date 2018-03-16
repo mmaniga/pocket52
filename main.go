@@ -8,29 +8,13 @@ import (
 func main() {
 	fmt.Println("Testing Pocket52")
 	d := ggame.NewDeck()
-	d.Print()
-	fmt.Println(d.ToString())
-	d.Shuffle()
-	fmt.Println(d.ToString())
-	d.Shuffle()
-	fmt.Println(d.ToString())
-	d.Shuffle()
-	fmt.Println(d.ToString())
-	d.Shuffle()
-	fmt.Println(d.ToString())
-	d.Shuffle()
-	fmt.Println(d.ToString())
-	d.Shuffle()
 	fmt.Println(d.ToString())
 	d.Shuffle()
 	fmt.Println(d.ToString())
 
-	fmt.Println("No of Cards ", d.NoOfCards())
-	fmt.Println(d.Take().String())
-	fmt.Println("No of Cards ", d.NoOfCards())
-	fmt.Println(d.Take().String())
-	fmt.Println(d.Take().String())
-	fmt.Println(d.Take().String())
-	fmt.Println("No of Cards ", d.NoOfCards())
+	h := ggame.Hand{}
+	cards, _ := d.PopN(5)
+	h.FiveCard(cards)
+	fmt.Println(h.ToString())
 
 }

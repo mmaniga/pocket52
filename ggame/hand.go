@@ -5,35 +5,35 @@ import (
 )
 
 /**
-High Card: Highest value card.
-One Pair: Two cards of the same value.
-Two Pairs: Two different pairs.
-Three of a Kind: Three cards of the same value.
-Straight: All cards are consecutive values.
-Flush: All cards of the same suit.
-Full House: Three of a kind and a pair.
-Four of a Kind: Four cards of the same value.
-Straight Flush: All cards are consecutive values of same suit.
-Royal Flush: Ten, Jack, Queen, King, Ace, in same suit.
+1) High Card: Highest value card.
+2) One Pair: Two cards of the same value.
+3) Two Pairs: Two different pairs.
+4) Three of a Kind: Three cards of the same value.
+5) Straight: All cards are consecutive values.
+6) Flush: All cards of the same suit.
+7) Full House: Three of a kind and a pair.
+8) Four of a Kind: Four cards of the same value.
+9) Straight Flush: All cards are consecutive values of same suit.
+10) Royal Flush: Ten, Jack, Queen, King, Ace, in same suit.
 */
 
 type HandRank int
 
 const (
-	HIGH_CARD HandRank = iota
-	ONE_PAIR
-	TWO_PAIR
-	THREE_OF_A_KIND
-	STRAIGHT
-	FLUSH
-	FULL_HOUSE
-	FOUR_OF_KIND
-	STRAIGHT_FLUSH
-	ROYAL_FLUSH
+	HighCard HandRank = iota
+	OnePair
+	TwoPair
+	ThreeOfAKind
+	Straight
+	Flush
+	FullHouse
+	FourOfAKind
+	StraightFlush
+	RoyalFlush
 )
 
 var (
-	HANDSRank = []HandRank{HIGH_CARD, ONE_PAIR, TWO_PAIR, THREE_OF_A_KIND, STRAIGHT, FLUSH, FULL_HOUSE, FOUR_OF_KIND, STRAIGHT_FLUSH, ROYAL_FLUSH}
+	HandsRank = []HandRank{HighCard, OnePair, TwoPair, ThreeOfAKind, Straight, Flush, FullHouse, FourOfAKind, StraightFlush, RoyalFlush}
 )
 
 type Hand struct {
@@ -54,4 +54,13 @@ func (h *Hand) ToString() string {
 		buffer.WriteString(" ")
 	}
 	return buffer.String()
+}
+
+func (h *Hand) Sort() {
+
+}
+
+func (h *Hand) GetHandRank() HandRank {
+
+	return HighCard
 }

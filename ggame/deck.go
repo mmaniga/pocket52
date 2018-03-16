@@ -18,7 +18,7 @@ func NewDeck() *Deck {
 	for s := range SUITS {
 		for r := range RANKS {
 			d.Cards[index] = Card(r*4 + s)
-			fmt.Println(index, ":", r*4+s)
+			//fmt.Println(index, ":", r*4+s)
 			index++
 		}
 	}
@@ -78,7 +78,7 @@ func (d *Deck) Take() Card {
 
 // Not sure of which name to keep for the function..
 func (d *Deck) Pop() Card {
-	return d.Pop()
+	return d.Take()
 }
 
 func (d *Deck) PopN(nCards int) ([]Card, error) {

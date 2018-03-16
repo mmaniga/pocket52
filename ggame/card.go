@@ -15,8 +15,7 @@ const (
 )
 
 const (
-	ACE Rank = iota
-	TWO
+	TWO Rank = iota
 	THREE
 	FOUR
 	FIVE
@@ -28,13 +27,14 @@ const (
 	JACK
 	QUEEN
 	KING
+	ACE
 )
 
 type Card int
 
 var (
 	SUITS = []Suit{CLUB, DIAMOND, HEART, SPADE}
-	RANKS = []Rank{ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING}
+	RANKS = []Rank{TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE}
 )
 
 func (c Card) String() string {
