@@ -10,4 +10,12 @@ func main() {
 	d := ggame.NewDeck()
 	d.Print()
 	fmt.Println(d.ToString())
+	fmt.Println("No of Cards ", d.NoOfCards())
+	fmt.Println(d.Take().String())
+	fmt.Println("No of Cards ", d.NoOfCards())
+	fmt.Println(d.Take().String())
+	fmt.Println(d.Take().String())
+	fmt.Println(d.Take().String())
+	fmt.Println("No of Cards ", d.NoOfCards())
+
 }

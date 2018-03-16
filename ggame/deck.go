@@ -49,3 +49,21 @@ func (d *Deck) ToString() string {
 func (d *Deck) Shuffle() {
 
 }
+
+func (d *Deck) CardsRemaiing() int {
+	return len(d.Cards)
+}
+
+// Not sure which name would be good..so keep two functions
+func (d *Deck) NoOfCards() int {
+	return len(d.Cards)
+}
+
+func (d *Deck) Take() Card {
+	var c Card
+	if len(d.Cards) > 0 {
+		c = d.Cards[0]
+		d.Cards = d.Cards[1:]
+	}
+	return c
+}
