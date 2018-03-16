@@ -2,6 +2,7 @@ package ggame
 
 import (
 	"fmt"
+	"math/rand"
 	"strings"
 )
 
@@ -48,6 +49,12 @@ func (d *Deck) ToString() string {
 
 func (d *Deck) Shuffle() {
 
+	totalCards := len(d.Cards)
+
+	for i := 0; i < totalCards; i++ {
+		r := i + rand.Intn(totalCards-i)
+		d.Cards[r], d.Cards[i] = d.Cards[i], d.Cards[r]
+	}
 }
 
 func (d *Deck) CardsRemaiing() int {
