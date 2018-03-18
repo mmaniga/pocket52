@@ -16,5 +16,7 @@ func main() {
 	cards, _ := d.PopN(5)
 	h.FiveCard(cards)
 	fmt.Println(h.ToString())
+	h.Sort()
+	fmt.Println(h.ToString())
 
 }

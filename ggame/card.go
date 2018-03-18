@@ -37,6 +37,14 @@ var (
 	RANKS = []Rank{TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE}
 )
 
+func (c Card) Rank() Rank {
+	return Rank(c / 4)
+}
+
+func (c Card) Suit() Suit {
+	return Suit(c % 4)
+}
+
 func (c Card) String() string {
 	r := Rank(c / 4)
 	s := Suit(c % 4)

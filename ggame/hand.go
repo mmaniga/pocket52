@@ -1,6 +1,7 @@
 package ggame
 
 import (
+	"sort"
 	"strings"
 )
 
@@ -42,6 +43,14 @@ type Hand struct {
 	Rank  HandRank
 }
 
+func (h *Hand) Len() int           { return len(h.Cards) }
+func (h *Hand) Swap(i, j int)      { h.Cards[i], h.Cards[j] = h.Cards[j], h.Cards[i] }
+func (h *Hand) Less(i, j int) bool { return h.Cards[i].Rank() < h.Cards[j].Rank() }
+
+func (h *Hand) Sort() {
+	sort.Sort(h)
+}
+
 func (h *Hand) FiveCard(c []Card) {
 	h.Cards = c
 }
@@ -54,10 +63,6 @@ func (h *Hand) ToString() string {
 		buffer.WriteString(" ")
 	}
 	return buffer.String()
-}
-
-func (h *Hand) Sort() {
-
 }
 
 func (h *Hand) GetHandRank() HandRank {
