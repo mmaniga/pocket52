@@ -1,6 +1,8 @@
 package ggame
 
 import (
+	"errors"
+	//"fmt"
 	"sort"
 	"strings"
 )
@@ -33,8 +35,13 @@ const (
 	RoyalFlush
 )
 
+func (h HandRank) ToString() string {
+	return HandRenkString[h]
+}
+
 var (
-	HandsRank = []HandRank{HighCard, OnePair, TwoPair, ThreeOfAKind, Straight, Flush, FullHouse, FourOfAKind, StraightFlush, RoyalFlush}
+	HandsRank      = []HandRank{HighCard, OnePair, TwoPair, ThreeOfAKind, Straight, Flush, FullHouse, FourOfAKind, StraightFlush, RoyalFlush}
+	HandRenkString = []string{"HighCard", "OnePair", "TwoPair", "ThreeOfAKind", "Straight", "Flush", "FullHouse", "FourOfAKind", "StraightFlush", "RoyalFlush"}
 )
 
 type Hand struct {
@@ -55,6 +62,22 @@ func (h *Hand) FiveCard(c []Card) {
 	h.Cards = c
 }
 
+func NewHandFromString(hand string) (*Hand, error) {
+
+	h := Hand{}
+	hs := strings.Split(hand, " ")
+	if len(hs) != 5 {
+		return &h, errors.New("invalid hand")
+	}
+	cards := make([]Card, 5)
+	for i := 0; i < 5; i++ {
+		card, _ := NewCard(hs[i])
+		cards[i] = card
+	}
+	h.FiveCard(cards)
+	return &h, nil
+}
+
 func (h *Hand) ToString() string {
 	var buffer strings.Builder
 	noOfCards := len(h.Cards)
@@ -67,5 +90,16 @@ func (h *Hand) ToString() string {
 
 func (h *Hand) GetHandRank() HandRank {
 
-	return HighCard
+	var handRank HandRank
+	straight := true
+
+	for i := 0; i < len(h.Cards)-1; i++ {
+		if h.Cards[i].Rank() != h.Cards[i+1].Rank() {
+			straight = false
+		}
+	}
+	if straight == true {
+		handRank = Straight
+	}
+	return handRank
 }

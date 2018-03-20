@@ -1,7 +1,9 @@
 package ggame
 
 import (
+	"errors"
 	"fmt"
+	"strings"
 )
 
 type Suit int // Spade, Heart, Diamond, Club
@@ -33,8 +35,10 @@ const (
 type Card int
 
 var (
-	SUITS = []Suit{CLUB, DIAMOND, HEART, SPADE}
-	RANKS = []Rank{TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE}
+	SUITS     = []Suit{CLUB, DIAMOND, HEART, SPADE}
+	RANKS     = []Rank{TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE}
+	RankOrder = "23456789TJQKA"
+	SuitOrder = "CDHS"
 )
 
 func (c Card) Rank() Rank {
@@ -45,6 +49,16 @@ func (c Card) Suit() Suit {
 	return Suit(c % 4)
 }
 
+func NewCard(c string) (Card, error) {
+	if len(c) < 2 {
+		return Card(0), errors.New("Invalid Card")
+	}
+	r := strings.Index(RankOrder, string(c[0]))
+	s := strings.Index(SuitOrder, string(c[1]))
+
+	return Card(r*4 + s), nil
+
+}
 func (c Card) String() string {
 	r := Rank(c / 4)
 	s := Suit(c % 4)
