@@ -18,7 +18,6 @@ func NewDeck() *Deck {
 	for s := range SUITS {
 		for r := range RANKS {
 			d.Cards[index] = Card(r*4 + s)
-			//fmt.Println(index, ":", r*4+s)
 			index++
 		}
 	}
