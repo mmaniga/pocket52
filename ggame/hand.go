@@ -94,12 +94,31 @@ func (h *Hand) GetHandRank() HandRank {
 	straight := true
 
 	for i := 0; i < len(h.Cards)-1; i++ {
-		if h.Cards[i].Rank() != h.Cards[i+1].Rank() {
+		if h.Cards[i].Rank()+1 != h.Cards[i+1].Rank() {
 			straight = false
+			break
 		}
 	}
-	if straight == true {
+
+	flush := true
+	for i := 1; i < len(h.Cards); i++ {
+		if h.Cards[0].Suit() != h.Cards[i].Suit() {
+			flush = false
+			break
+		}
+	}
+
+	if straight {
 		handRank = Straight
 	}
+
+	if flush {
+		handRank = Flush
+	}
+
+	if straight && flush {
+		handRank = StraightFlush
+	}
+
 	return handRank
 }

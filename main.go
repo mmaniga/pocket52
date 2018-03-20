@@ -28,10 +28,18 @@ func main() {
 
 	h3, _ := ggame.NewHandFromString("2C 3C 4C 5C 6C")
 	fmt.Println(h3.ToString())
-
 	fmt.Println(h3.GetHandRank().ToString())
 
-	h4, _ := ggame.NewHandFromString("2C 3C 7C 5C 6C")
+	h4, _ := ggame.NewHandFromString("2C 3C 4D 5C 6C")
 	fmt.Println(h4.ToString())
+	fmt.Println(h4.GetHandRank().ToString())
+
+	h5, _ := ggame.NewHandFromString("2C 3C 7D 5C 6C")
+	fmt.Println(h5.ToString())
+	fmt.Println(h5.GetHandRank().ToString())
+
+	h6, _ := ggame.NewHandFromString("2C 7C TC AC JC")
+	fmt.Println(h6.ToString())
+	fmt.Println(h6.GetHandRank().ToString())
 
 }

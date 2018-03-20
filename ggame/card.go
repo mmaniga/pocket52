@@ -67,8 +67,6 @@ func (c Card) String() string {
 	suit := ""
 
 	switch r {
-	case ACE:
-		rank = "A"
 	case TWO:
 		rank = "2"
 	case THREE:
@@ -93,7 +91,7 @@ func (c Card) String() string {
 		rank = "9"
 
 	case TEN:
-		rank = "10"
+		rank = "T"
 
 	case JACK:
 		rank = "J"
@@ -103,7 +101,8 @@ func (c Card) String() string {
 
 	case KING:
 		rank = "K"
-
+	case ACE:
+		rank = "A"
 	}
 
 	switch s {
