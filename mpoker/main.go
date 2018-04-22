@@ -11,6 +11,10 @@ func main() {
 	fmt.Println(d.ToString())
 	d.Shuffle()
 	fmt.Println(d.ToString())
+	d.Shuffle()
+	fmt.Println(d.ToString())
+	d.Shuffle()
+	fmt.Println(d.ToString())
 
 	h := ggame.Hand{}
 	cards, _ := d.PopN(5)
